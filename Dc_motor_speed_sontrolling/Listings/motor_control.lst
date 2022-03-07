@@ -1,0 +1,127 @@
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     03/07/2022 10:27:25 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MOTOR_CONTROL
+OBJECT MODULE PLACED IN .\Objects\motor_control.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.exe motor_control.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\motor_control.lst) TABS(2) OBJECT(.\Objects\motor_control.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          sbit motor= P2^0;
+   4          
+   5          sbit sw1=P1^0;      //low speed input 1 /sensor 1
+   6          
+   7          sbit sw2=P1^1;      //average speed
+   8          
+   9          sbit sw3=P1^2;      //max speed
+  10          
+  11          sbit sw4=P1^3;      //stop
+  12          
+  13          
+  14          
+  15          void delay(unsigned int);
+  16          
+  17          void main()
+  18          
+  19          {
+  20   1      
+  21   1        unsigned int v1;
+  22   1      
+  23   1        motor =0;
+  24   1      
+  25   1        while(1)
+  26   1      
+  27   1              {
+  28   2      
+  29   2                if(sw1==0)
+  30   2      
+  31   2                {
+  32   3      
+  33   3                  for(v1=0;v1<200;v1++)
+  34   3      
+  35   3                  {
+  36   4      
+  37   4                  motor=1;
+  38   4      
+  39   4                  delay(10);
+  40   4      
+  41   4                  motor=0;
+  42   4      
+  43   4                  delay(10);
+  44   4      
+  45   4                  }
+  46   3      
+  47   3                }
+  48   2      
+  49   2                if(sw2==0)
+  50   2      
+  51   2                {
+  52   3      
+  53   3                  for(v1=0;v1<200;v1++)
+  54   3      
+C51 COMPILER V9.60.0.0   MOTOR_CONTROL                                                     03/07/2022 10:27:25 PAGE 2   
+
+  55   3                  {
+  56   4      
+  57   4                  motor=1;
+  58   4      
+  59   4                  delay(20);
+  60   4      
+  61   4                  motor=0;
+  62   4      
+  63   4                  delay(5);
+  64   4      
+  65   4                  }
+  66   3      
+  67   3                }
+  68   2      
+  69   2                if(sw3==0)
+  70   2      
+  71   2                {
+  72   3      
+  73   3                  motor=1;
+  74   3      
+  75   3                }
+  76   2      
+  77   2                if(sw4==0)
+  78   2      
+  79   2                {
+  80   3      
+  81   3                  motor=0;
+  82   3      
+  83   3                }
+  84   2      
+  85   2                
+  86   2      
+  87   2              }
+  88   1      
+  89   1            }
+  90          
+  91          void delay(unsigned int val)
+  92          
+  93          {
+  94   1      
+  95   1        unsigned int v2,v3;
+  96   1      
+  97   1        for(v2=0;v2<val;v2++)
+  98   1      
+  99   1        for(v3=0;v3<400;v3++);
+ 100   1      
+ 101   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    132    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
